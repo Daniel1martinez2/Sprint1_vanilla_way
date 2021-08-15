@@ -21,9 +21,22 @@ const csvParser = async (data) => {
   })
   return obj_data;
 };
-
+//Handle sorting
+const sortingHandler = (data, ascendent, column) => {
+  let dispatch = []; 
+  if(ascendent){
+    dispatch = data.sort((a, b) => a[column] - b[column]);
+  }else{
+    dispatch = data.sort((a, b) => b[column] - a[column]); 
+  }
+  return dispatch;
+}
 //USE
 const dataAsString = fetchCSV('../data/sp.csv');
 const converted = dataAsString.then(value => {
-  csvParser(value).then(result => console.table(result)); 
+  csvParser(value).then(result => {
+    console.table(result)
+    const test = sortingHandler(result, true, 'A')
+    console.table(test)
+  }); 
 });
