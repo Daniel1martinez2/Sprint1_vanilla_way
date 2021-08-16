@@ -5,9 +5,9 @@ export const csvParser = async (data) => {
   const transformed = data.split(/\r?\n/).map(data => data.split(','));
   //Get the headers
   const headers = transformed[0];
-  //rid of the headers
+  //2. rid of the headers
   transformed.splice(0, 1);
-  //Design the array elem according to the headers
+  //3. Design the array elem according to the headers
   const obj_data = transformed.map(data => {
     const current = {};
     headers.forEach((i, index) => current[i] = data[index])
