@@ -13,5 +13,6 @@ export const csvParser = async (data) => {
     headers.forEach((i, index) => current[i] = data[index])
     return current;
   })
-  return obj_data;
+  // return obj_data;
+  return {parsedData: obj_data, headers: headers};
 };
