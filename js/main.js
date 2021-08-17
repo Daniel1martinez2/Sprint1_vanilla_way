@@ -10,12 +10,14 @@ submit.addEventListener('click', (event) => {
   event.preventDefault();
   console.clear();
   const ascendent = order.value === '1' ? true : false; 
-  dataConverted.then(result => {
+  const handlingData = async () => {
+    const converted = await dataConverted; 
     const test = sortingHandler({
-      data: result, 
+      data: converted, 
       ascendent: ascendent, 
       column: column.value
-    })
-    console.table(test)
-  }); 
+    }); 
+    console.table(test); 
+  }; 
+  handlingData(); 
 }); 
